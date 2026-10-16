@@ -1,0 +1,29 @@
+{
+  "name": "eternal-love-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@crossmint/client-sdk-react-ui": "^4.10.1",
+    "ethers": "^6.13.0",
+    "lucide-react": "^0.400.0",
+    "next": "^14.2.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^7.0.0",
+    "@tailwindcss/postcss": "^4.3.3",
+    "autoprefixer": "^10.6.1",
+    "dotenv": "^18.0.8",
+    "hardhat": "^3.19.0",
+    "postcss": "^8.5.30",
+    "tailwindcss": "^4.3.3"
+  },
+  "type": "module"
+}

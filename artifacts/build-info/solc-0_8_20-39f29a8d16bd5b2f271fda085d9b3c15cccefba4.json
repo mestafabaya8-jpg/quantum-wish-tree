@@ -1,0 +1,42 @@
+{
+  "_format": "hh3-sol-build-info-1",
+  "id": "solc-0_8_20-39f29a8d16bd5b2f271fda085d9b3c15cccefba4",
+  "solcVersion": "0.8.20",
+  "solcLongVersion": "0.8.20+commit.a1b79de6",
+  "compilerType": "solc",
+  "userSourceNameMap": {
+    "contracts/EternalVows.sol": "project/contracts/EternalVows.sol"
+  },
+  "input": {
+    "language": "Solidity",
+    "settings": {
+      "evmVersion": "shanghai",
+      "outputSelection": {
+        "*": {
+          "": [
+            "ast"
+          ],
+          "*": [
+            "abi",
+            "evm.bytecode.linkReferences",
+            "evm.bytecode.object",
+            "evm.bytecode.opcodes",
+            "evm.bytecode.sourceMap",
+            "evm.deployedBytecode.immutableReferences",
+            "evm.deployedBytecode.linkReferences",
+            "evm.deployedBytecode.object",
+            "evm.deployedBytecode.opcodes",
+            "evm.deployedBytecode.sourceMap",
+            "evm.methodIdentifiers"
+          ]
+        }
+      },
+      "remappings": []
+    },
+    "sources": {
+      "project/contracts/EternalVows.sol": {
+        "content": "\n// SPDX-License-Identifier: MIT\npragma solidity ^0.8.20;\n\ncontract EternalVows {\n    struct Vow {\n        string partner1;\n        string partner2;\n        string message;\n        uint256 timestamp;\n        address creator;\n    }\n\n    Vow[] public vows;\n\n    event VowRecorded(uint256 indexed vowId, string partner1, string partner2, address indexed creator);\n\n    function recordVow(string memory _partner1, string memory _partner2, string memory _message) public returns (uint256) {\n        vows.push(Vow({\n            partner1: _partner1,\n            partner2: _partner2,\n            message: _message,\n            timestamp: block.timestamp,\n            creator: msg.sender\n        }));\n\n        uint256 newId = vows.length - 1;\n        emit VowRecorded(newId, _partner1, _partner2, msg.sender);\n        return newId;\n    }\n\n    function getTotalVows() public view returns (uint256) {\n        return vows.length;\n    }\n\n    function getVow(uint256 _id) public view returns (string memory, string memory, string memory, uint256, address) {\n        require(_id < vows.length, \"Vow does not exist\");\n        Vow memory v = vows[_id];\n        return (v.partner1, v.partner2, v.message, v.timestamp, v.creator);\n    }\n}\n\r\n"
+      }
+    }
+  }
+}
